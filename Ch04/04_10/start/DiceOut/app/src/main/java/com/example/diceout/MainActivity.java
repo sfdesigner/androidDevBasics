@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -96,6 +98,17 @@ public class MainActivity extends AppCompatActivity {
         dice.add(die1);
         dice.add(die2);
         dice.add(die3);
+
+        for (int dieOfSet = 0; dieOfSet < 3; dieOfSet++) {
+            String imageName = "die_" + dice.get(dieOfSet) + ".png";
+
+            try {
+                InputStream stream = getAssets().open(imageName);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         // Build message with the result
         String msg = "You rolled a " + die1 + ", a " + die2 + ", and a " + die3;
